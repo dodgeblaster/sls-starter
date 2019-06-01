@@ -3,7 +3,7 @@
 To create this service locally on your machine:
 
 ```
-serverless create --template-url https://github.com/cnktech/serviceStarterTemplate
+serverless create --template-url https://github.com/dodgeblaster/sls-starter
 ```
 
 ### Overview
