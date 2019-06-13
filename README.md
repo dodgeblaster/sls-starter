@@ -1,33 +1,9 @@
-# Starter Service
+## Backend Service Dev Cycle
 
-To create this service locally on your machine:
+Basic Philosophy: Be strict with the border, liberal on what is inside.
 
-```
-serverless create --template-url https://github.com/dodgeblaster/sls-starter
-```
+In the docs folder, there is a checklist of tasks that help define the 'border'.
 
-### Overview
-
-There are 5 parts to this service:
-
--   domain
--   infra
--   triggers
--   io
--   interfaces
-
-![Overview](https://design-autrpctplz.now.sh/arch-overview.png)
-
-### Flow of execution
-
-![Drivers](https://design-autrpctplz.now.sh/arch-drivers.png)
-
-### Testing
-
-We test the following:
-
--   100% of the domain with unit tests
--   100% of the triggers with unit tests
--   100% of the real adaptors in infra with integration tests
-
-We use interfaces to insure that each part of the system is following contract between layers.
+-   Make sure io is defined and documented
+-   Make sure you have 90%+ test coverage
+-   Make sure a general summary is given for the service to help other developers.
