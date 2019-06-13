@@ -1,11 +1,11 @@
 ## Post
 
 ```ts
-type getAllPostsInput = {
+export type GetAllPostsInput = {
     memberId: string
 }
 
-type getAllOrgsOutput = {
+export type GetAllOrgsOutput = {
     id: string
     title: string
     body: string
