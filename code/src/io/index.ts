@@ -7,6 +7,18 @@ export default () => {
         lambda: layer.lambda(aws),
         emit: layer.emit(aws),
         dynamo: layer.dynamo(aws),
-        input: layer.input
+        input: layer.input,
+        error400: x => ({
+            statusCode: 400,
+            body: JSON.stringify({ message: x })
+        }),
+        error400: x => ({
+            statusCode: 400,
+            body: JSON.stringify({ message: x })
+        }),
+        httpOut: x => ({
+            statusCode: 200,
+            body: JSON.stringify(x)
+        })
     }
 }
