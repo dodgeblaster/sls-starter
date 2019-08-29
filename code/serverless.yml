@@ -41,14 +41,18 @@ custom:
     region: ${opt:region, self:provider.region}
 
 functions:
-    # REQUEST RESPONSE FOR GRAPHQL SERVICE
+    # API REQUEST RESPONSE EXAMPLE
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # exampleFunction:
     #     handler: src/triggers/index.exampleFunction
+    #     events:
+    #        - http:
+    #              method: get
+    #              path: /
+    #              cors: true
     #
     #
-    #
-    # SNS TRIGGERS
+    # SNS TRIGGERS EXAMPLE
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # exampleSnsTriggererFunction:
     #     handler: src/triggers/index.exampleSnsTriggererFunction
@@ -57,10 +61,10 @@ functions:
     #
     #
     #
-    # SCHEDULED TRIGGERS
+    # SCHEDULED TRIGGERS EXAMPLE
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # exampleCronTriggeredFunction:
     #     handler: src/triggers/index.exampleCronTriggeredFunction
-    #     timeout: 600
     #     events:
     #         - schedule: rate(15 minutes)
 
