@@ -1,24 +1,24 @@
 import io from '../io'
-import setupInfra from './../infra'
+import infra from '../infra'
 import domain from '../domain'
 
-// REQUEST RESPONSE FOR GRAPHQL SERVICE
+const builtDomain = domain(infra(io()))
+
+// API REQUEST RESPONSE
 export const exampleFunction = async (event, context, callback) => {
-    const infra = setupInfra(io())
-    return await domain(infra).exampleFunction(event)
+    const result = await builtDomain(infra).exampleFunction(event)
+    return io.httpOut(result)
 }
 
 // SNS TRIGGERS
 export const exampleSnsTriggeredFunction = async (event, context, callback) => {
-    const data = io().input.sns(event)
-    const infra = setupInfra(io())
-    await domain(infra).exampleSnsTriggeredFunction(data)
+    const data = io().input.sns(event)))
+    await builtDomain(infra).exampleSnsTriggeredFunction(data)
     return true
 }
 
 // SCHEDULED TRIGGERS
 export const checkCompileList = async (event, context, callback) => {
-    const infra = setupInfra(io())
-    await domain(infra).exampleCronTriggeredFunction()
+    await builtDomain(infra).exampleCronTriggeredFunction()
     return true
 }
