@@ -3,11 +3,19 @@ export default AWS => async (event, data) => {
         region: process.env.REGION || 'us-east-1'
     })
 
-    const arn = await SNS.createTopic({ Name: event }).promise()
+    /**
+     * SNS.createTopic is only necessary to get the ARN of an already created topic. Alternativly, you 
+     * can determine the arn by using:
+     *   - aws region
+     *   - aws account id
+     *
+     * Which allow you to skip this additional call  
+     */
+    const alreadyCreatedTopic = await SNS.createTopic({ Name: event }).promise()
 
     return SNS.publish({
         Subject: event,
         Message: JSON.stringify(data),
-        TopicArn: arn.TopicArn
+        TopicArn: alreadyCreatedTopic.TopicArn
     }).promise()
 }
