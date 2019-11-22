@@ -12,8 +12,8 @@ export default () => {
             statusCode: 400,
             body: JSON.stringify({ message: x })
         }),
-        error400: x => ({
-            statusCode: 400,
+        error500: x => ({
+            statusCode: 500,
             body: JSON.stringify({ message: x })
         }),
         httpOut: x => ({
