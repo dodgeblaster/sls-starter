@@ -25,7 +25,6 @@ const dynamoService = db => table => ({
         }
 
         const x = await db('get', params)
-
         return x.data.Item || false
     },
 
@@ -54,21 +53,17 @@ const dynamoService = db => table => ({
     },
 
     querySkAbove: async keys => {
-        try {
-            const params = {
-                TableName: table,
-                KeyConditionExpression: 'PK = :pk AND SK >= :sk',
-                ExpressionAttributeValues: {
-                    ':pk': keys.PK,
-                    ':sk': keys.SK
-                }
+        const params = {
+            TableName: table,
+            KeyConditionExpression: 'PK = :pk AND SK >= :sk',
+            ExpressionAttributeValues: {
+                ':pk': keys.PK,
+                ':sk': keys.SK
             }
-
-            const x = await db('query', params)
-            return x.data.Items
-        } catch (e) {
-            return []
         }
+
+        const x = await db('query', params)
+        return x.data.Items
     },
 
     queryOnGSI1: async x => {
@@ -81,9 +76,8 @@ const dynamoService = db => table => ({
             }
         }
 
-        const r = await db('query', params)
-
-        return r.data.Items
+        const x = await db('query', params)
+        return x.data.Items
     },
 
     queryOnGSI1AndSk: async x => {
@@ -127,6 +121,5 @@ const dynamoService = db => table => ({
     }
 })
 
-export default (AWS, test = false) => {
-    return dynamoService(db(AWS, test))
-}
+export default (AWS, test = false) => dynamoService(db(AWS, test))
+
