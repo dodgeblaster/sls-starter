@@ -1,6 +1,6 @@
 export default AWS => (name, payload) => {
     const Lambda = new AWS.Lambda()
-    const p = {
+    const params = {
         FunctionName: name,
         InvocationType: 'RequestResponse',
         Payload: JSON.stringify(payload),
@@ -8,7 +8,7 @@ export default AWS => (name, payload) => {
     }
 
     return new Promise((resolve, reject) => {
-        Lambda.invoke(p, (err, data) => {
+        Lambda.invoke(params, (err, data) => {
             if (err) return reject(err)
             const payload = JSON.parse(data.Payload)
             if (payload.errorMessage) return reject(payload)
