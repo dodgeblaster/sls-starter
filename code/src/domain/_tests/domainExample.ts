@@ -10,7 +10,9 @@ describe('exampleDomainTest', () => {
         }
         const mockInfra: Infra = infra({}, true, infraState)
         await domain(mockInfra).exampleFunction(input)
-        const event = infraState.filter(x => x.name === 'example')[0]
+        
+        const eventIWantToTest = 'example-event'
+        const event = infraState.filter(x => x.name === eventIWantToTest')[0]
         expect(1).toBe(1)
     })
 })
