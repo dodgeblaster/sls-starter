@@ -1,3 +1,6 @@
+# What is this project?
+This is a reference architecture project for building a serverless microservice using hexegonal architecture strategies.
+
 ## Backend Service Dev Cycle
 
 Basic Philosophy: Be strict with the border, liberal on what is inside.
